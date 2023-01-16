@@ -2,7 +2,7 @@ let playerWins = 0;
 let computerWins = 0;
 let ties = 0;
 
-function getComputerChoice(){
+function getComputerSelection(){
     let randomNumber = Math.floor(Math.random() * 3) + 1;
     let computerSelection;
 
@@ -18,9 +18,9 @@ function getComputerChoice(){
 }
 
 function getPlayerSelection(){
+
     playerSelection = window.prompt('Choose rock, paper, or scissors:').toLowerCase();
     
-    //check if valid input
     while(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors'){
         playerSelection = window.prompt('Invalid entry.  Choose rock, paper, or scissors:').toLowerCase();
     }
@@ -29,13 +29,13 @@ function getPlayerSelection(){
 }
 
 function playRound(playerSelection, computerSelection){
-    //check ties
+
     if(playerSelection === computerSelection){
         ties++;
         return `Tie game!  You and the computer both chose ${playerSelection}.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
     }
 
-    //check win/loss if playerSelection === rock
+    //playerSelection === rock
     else if(playerSelection === 'rock' && computerSelection === 'paper'){
         computerWins++;
         return `You lose!  The computer chose paper.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection){
         return `You win!  The computer chose scissors.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
     }
 
-    //check win/loss if playerSelection === paper
+    //playerSelection === paper
     else if(playerSelection === 'paper' && computerSelection === 'rock'){
         playerWins++;
         return `You win!  The computer chose rock.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
@@ -53,7 +53,7 @@ function playRound(playerSelection, computerSelection){
         return `You lose!  The computer chose scissors.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
     }
 
-    //check win/loss if playerSelection === scissors
+    //playerSelection === scissors
     else if(playerSelection === 'scissors' && computerSelection === 'rock'){
         computerWins++;
         return `You lose!  The computer chose rock.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
@@ -76,7 +76,7 @@ function playGame(){
     for(i = 1; i <= 5; i++){
         playerSelection = getPlayerSelection();
 
-        computerSelection = getComputerChoice();
+        computerSelection = getComputerSelection();
 
         console.log(playRound(playerSelection, computerSelection));
     }
