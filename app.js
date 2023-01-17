@@ -21,7 +21,11 @@ function getPlayerSelection(){
 
     playerSelection = window.prompt('Choose rock, paper, or scissors:').toLowerCase();
     
-    while(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors'){
+    while(
+        playerSelection != 'rock' 
+        && playerSelection != 'paper' 
+        && playerSelection != 'scissors'
+        ){
         playerSelection = window.prompt('Invalid entry.  Choose rock, paper, or scissors:').toLowerCase();
     }
 
