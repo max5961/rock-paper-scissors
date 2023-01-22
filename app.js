@@ -2,6 +2,11 @@ let playerWins = 0;
 let computerWins = 0;
 let ties = 0;
 
+let playerSelection;
+let computerSelection;
+
+
+
 function getComputerSelection(){
     let randomNumber = Math.floor(Math.random() * 3) + 1;
     let computerSelection;
@@ -17,20 +22,7 @@ function getComputerSelection(){
     return computerSelection;
 }
 
-function getPlayerSelection(){
 
-    playerSelection = window.prompt('Choose rock, paper, or scissors:').toLowerCase();
-    
-    while(
-        playerSelection != 'rock' 
-        && playerSelection != 'paper' 
-        && playerSelection != 'scissors'
-        ){
-        playerSelection = window.prompt('Invalid entry.  Choose rock, paper, or scissors:').toLowerCase();
-    }
-
-    return playerSelection; 
-}
 
 function playRound(playerSelection, computerSelection){
 
@@ -77,14 +69,21 @@ function checkWinner(){
     }
 }
 function playGame(){
-    for(i = 1; i <= 5; i++){
-        playerSelection = getPlayerSelection();
-
         computerSelection = getComputerSelection();
 
         console.log(playRound(playerSelection, computerSelection));
     }
-}
 
-playGame();
-console.log(checkWinner());
+
+const playerInput = document.querySelector('.playerInput');
+const computerInput = document.querySelector('.computerInput');
+
+
+const rockBtn = document.querySelector('#rock');
+rockBtn.addEventListener('click', () => {
+    playerSelection = 'rock';
+    playerInput.textContent = `You choose ${playerSelection}!`;
+    computerSelection = getComputerSelection();
+    computerInput.textContent = `CPU chooses ${computerSelection}!`;
+}
+);

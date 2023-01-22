@@ -8,7 +8,63 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <div class="header-title">
+        <nav>
+            <div class="home"><a href="#">Home</a></div>
+        </nav>
     
+        <h1>ROCK PAPER SCISSORS</h1>
+        <h4>Play rock paper scissors against a computer.  First to 5 wins is declared the winner!</h2>
+    </div>
+
+    <div class="adjust-container">
+        <div class="game-container">
+            <div class="resultMessage">Rock beats Scissors.  You win!</div>
+
+            <div class="win-header">
+                <div class="playerWins">Player Wins: 0</div>
+                <div class="ties">Ties: 0</div>
+                <div class="computerWins">Computer Wins: 0</div>
+            </div>
+
+            <div class="display-container">
+                <div class="player-display">
+                    <div class="display-header">
+                        <div class="player-icon"></div>
+                    </div>
+                    <div class="playerInput"></div>
+                </div>
+                <div class="computer-display">
+                    <div class="display-header">
+                        <div class="computer-icon"></div>
+                    </div>
+                    <div class="computerInput"></div>
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <div class="btn-container">
+                    <button id="rock"></button>
+                    <div class="rock-text">Rock</div>
+                </div>
+
+                <div class="btn-container">
+                    <button id="paper"></button>
+                    <div class="paper-text">Paper</div>
+                </div>
+
+                <div class="btn-container">
+                    <button id="scissors"></button>
+                    <div class="scissors-text">Scissors</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://github.com/max5961">https://github.com/max5961</a>
+    </footer>
+
     <script src="./app.js"></script>
 </body>
 </html>
