@@ -46,7 +46,7 @@ h1{
     font-size: 60px;
     margin: 10px 0 5px 0;
     text-align: center;
-    color: #202231;
+    color: #181A25;
 }
 
 h4 {
@@ -93,6 +93,7 @@ footer {
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 5px;
 }
 
@@ -118,7 +119,7 @@ footer {
 .playerInput,
 .computerInput {
     flex: auto;
-    width: 160px;
+    width: 140px;
     border-radius: 5%;
     background-color: #FDE8E9;
     border: 2px solid #1F2232;

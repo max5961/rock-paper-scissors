@@ -83,6 +83,27 @@ const rockBtn = document.querySelector('#rock');
 rockBtn.addEventListener('click', () => {
     playerSelection = 'rock';
     playerInput.textContent = `You choose ${playerSelection}!`;
+    playerInput.setAttribute('style', 'background-image: url(./images/rock.png); background-size: 40%; background-repeat: no-repeat; background-position: center;');
+    computerSelection = getComputerSelection();
+    computerInput.textContent = `CPU chooses ${computerSelection}!`;
+}
+);
+
+const paperBtn = document.querySelector('#paper');
+paperBtn.addEventListener('click', () => {
+    playerSelection = 'paper';
+    playerInput.textContent = `You choose ${playerSelection}!`;
+    playerInput.setAttribute('style', 'background-image: url(./images/paper.png); background-size: 25%; background-repeat: no-repeat; background-position: center;')
+    computerSelection = getComputerSelection();
+    computerInput.textContent = `CPU chooses ${computerSelection}!`;
+}
+);
+
+const scissorsBtn = document.querySelector('#scissors');
+scissorsBtn.addEventListener('click', () => {
+    playerSelection = 'scissors';
+    playerInput.textContent = `You choose ${playerSelection}!`;
+    playerInput.setAttribute('style', 'background-image: url(./images/scissors.png); background-size: 60%; background-repeat: no-repeat; background-position: center;')
     computerSelection = getComputerSelection();
     computerInput.textContent = `CPU chooses ${computerSelection}!`;
 }
