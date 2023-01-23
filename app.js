@@ -12,6 +12,11 @@ const pWins = document.querySelector('.playerWins');
 const cWins = document.querySelector('.computerWins')
 const tie = document.querySelector('.ties');
 const resultMessage = document.querySelector('.resultMessage');
+const roundWinner = document.querySelector('.roundWinner')
+const roundWinnerMessage = document.querySelector('.roundWinnerMessage');
+
+const playAgainButton = document.createElement('button');
+playAgainButton.classList.add('playAgainButton');
 
 
 function getComputerSelection(){
@@ -73,33 +78,40 @@ function playRound(playerSelection, computerSelection){
     }
 }   
 
-function checkWinner(){
-    if(playerWins == computerWins){
-        return `Result is a tie!  You and the computer both won ${playerWins} out of 5 rounds.  There were ${ties} tie games.`
-    } else if(playerWins > computerWins){
-        return `You won!  You won ${playerWins} out of 5 rounds.  There were ${ties} tie games.`
-    } else if(playerWins < computerWins){
-        return `You lost!  The computer won ${computerWins} out of 5 rounds.  There were ${ties} tie games.`
+function playAgain(){
+    playAgainButton.addEventListener('click', () => {
+        playerWins = 0;
+        computerWins = 0;
+        ties = 0;
+            
+        resultMessage.textContent = 'Make a selection by clicking one of the icons below';
+
+        roundWinnerMessage.textContent = '';
+        playAgainButton.removeChild(roundWinner);
+    });
+}
+
+function checkWinner(playerWins, computerWins){
+    if(playerWins == 5){
+        roundWinnerMessage.textContent = 'You Win!  You were the first to 5 wins.'
+    } else if(computerWins == 5){
+        roundWinnerMessage.textContent = `You lose.  Computer was the first to 5 wins.`
     }
 }
-function playGame(){
-        computerSelection = getComputerSelection();
 
-        console.log(playRound(playerSelection, computerSelection));
-}
 
 // Each display picture needs to be resized to fit properly.  This function resizes the picture corresponding to the computer selection. //
 function displayComputerInput(computerSelection){
     if(computerSelection == 'rock'){
-        computerInput.setAttribute('style', `background-image: url(./images/${computerSelection}.png); background-size: 40%; background-repeat: no-repeat; background-position: center;`);
+        computerInput.setAttribute('style', `background-image: url(./images/${computerSelection}.png); background-size: 50%; background-repeat: no-repeat; background-position: center 75%;`);
     }
 
     else if(computerSelection == 'paper'){
-        computerInput.setAttribute('style', `background-image: url(./images/${computerSelection}.png); background-size: 25%; background-repeat: no-repeat; background-position: center;`);
+        computerInput.setAttribute('style', `background-image: url(./images/${computerSelection}.png); background-size: 35%; background-repeat: no-repeat; background-position: center 75%;`);
     }
 
     else if(computerSelection == 'scissors'){
-        computerInput.setAttribute('style', `background-image: url(./images/${computerSelection}.png); background-size: 60%; background-repeat: no-repeat; background-position: center;`);
+        computerInput.setAttribute('style', `background-image: url(./images/${computerSelection}.png); background-size: 65%; background-repeat: no-repeat; background-position: center 75%;`);
     }
 }
 
@@ -109,13 +121,11 @@ const rockBtn = document.querySelector('#rock');
 rockBtn.addEventListener('click', () => {
     playerSelection = 'rock';
     playerInput.textContent = `You choose ${playerSelection}!`;
-    playerInput.setAttribute('style', 'background-image: url(./images/rock.png); background-size: 40%; background-repeat: no-repeat; background-position: center;');
+    playerInput.setAttribute('style', 'background-image: url(./images/rock.png); background-size: 50%; background-repeat: no-repeat; background-position: center 75%;');
     computerSelection = getComputerSelection();
     computerInput.textContent = `Computer chooses ${computerSelection}!`;
     displayComputerInput(computerSelection);
     playRound(playerSelection, computerSelection);
-    
-    
 }
 );
 
@@ -123,7 +133,7 @@ const paperBtn = document.querySelector('#paper');
 paperBtn.addEventListener('click', () => {
     playerSelection = 'paper';
     playerInput.textContent = `You choose ${playerSelection}!`;
-    playerInput.setAttribute('style', 'background-image: url(./images/paper.png); background-size: 25%; background-repeat: no-repeat; background-position: center;')
+    playerInput.setAttribute('style', 'background-image: url(./images/paper.png); background-size: 35%; background-repeat: no-repeat; background-position: center 75%;')
     computerSelection = getComputerSelection();
     computerInput.textContent = `Computer chooses ${computerSelection}!`;
     displayComputerInput(computerSelection);
@@ -135,7 +145,7 @@ const scissorsBtn = document.querySelector('#scissors');
 scissorsBtn.addEventListener('click', () => {
     playerSelection = 'scissors';
     playerInput.textContent = `You choose ${playerSelection}!`;
-    playerInput.setAttribute('style', 'background-image: url(./images/scissors.png); background-size: 60%; background-repeat: no-repeat; background-position: center;')
+    playerInput.setAttribute('style', 'background-image: url(./images/scissors.png); background-size: 65%; background-repeat: no-repeat; background-position: center 75%;')
     computerSelection = getComputerSelection();
     computerInput.textContent = `Computer chooses ${computerSelection}!`;
     displayComputerInput(computerSelection);

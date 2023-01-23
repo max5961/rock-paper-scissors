@@ -1,12 +1,16 @@
+* {
+    box-sizing: content-box;
+}
+
 body {
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: #596475;
-    color: #30334B;
+    background-color: #8485a3;
+    color: #e3e5f5;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
@@ -17,6 +21,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    background-color: #475181;
 }
 
 nav {
@@ -66,16 +71,25 @@ footer {
     justify-content: center;
 }
 
-/*content*/
-.adjust-container {
-    height: 100%;
-    display: flex;
-    flex-direction:column;
-    justify-content: flex-start;
+footer > a {
+    display: block;
 }
 
+/*content*/
+/*.adjust-container {
+    height: 800px;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    
+}*/
+
 .game-container {
-    width: 325px;
+    width: 90%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,9 +98,14 @@ footer {
 
 /* win header */
 .win-header {
-    width: 100%;
+    width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    background-color: #8485a3;
+    border-radius: .5em .5em 0 0;
+    padding: 5px;
+    max-width: 500px;
+
 }
 
 .resultMessage {
@@ -103,6 +122,8 @@ footer {
     flex-direction: row;
     align-items: center;
     gap: 5px;
+    margin-bottom: 10px;
+    color:#1F2232;
 }
 
 .player-display,
@@ -110,6 +131,7 @@ footer {
     flex: auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 185px;
     /*border: 2px solid #1F2232;*/
 }
@@ -128,9 +150,9 @@ footer {
 .computerInput {
     flex: auto;
     width: 140px;
-    border-radius: 5%;
-    background-color: #FDE8E9;
-    border: 2px solid #1F2232;
+    border-radius: .5em;
+    background-color: #fff1f1;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -148,10 +170,14 @@ footer {
     height: 30px;
     width: 30px;
     margin: 5px;
-    background-image: url(./images/computer-icon.png);
-    background-size: contain;
+    background-image: url(./images/computer-2893112_1920.png);
+    background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
+    background-color:rgb(218, 218, 218);
+    border-radius: 1em;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+
 }
 
 .player-icon {
@@ -162,6 +188,8 @@ footer {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 1em;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 
@@ -190,34 +218,34 @@ button {
 }
 
 button:hover {
-    border: 2px solid #FDE8E9;
-    background-color: #BC9EC1;
-    border-radius: 10%;
+    background-color: #d9c7dc;
+    border-radius: .5em;
+    box-shadow: 3px 3px 2px rgba(0,0,0,0.5);
 }
 
 button:active {
-    border: 5px solid #FDE8E9;
-    background-color: #BC9EC1;
-    border-radius: 10%;
+    background-color: #d2bfd5;
+    border-radius: .5em;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
 #rock {
     background-image: url(./images/rock.png);
-    background-size: contain;
+    background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #paper {
     background-image: url(./images/paper.png);
-    background-size: contain;
+    background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #scissors {
     background-image: url(./images/scissors.png);
-    background-size: contain;
+    background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
 }
