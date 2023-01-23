@@ -6,6 +6,13 @@ let playerSelection;
 let computerSelection;
 
 
+const playerInput = document.querySelector('.playerInput');
+const computerInput = document.querySelector('.computerInput');
+const pWins = document.querySelector('.playerWins');
+const cWins = document.querySelector('.computerWins')
+const tie = document.querySelector('.ties');
+const resultMessage = document.querySelector('.resultMessage');
+
 
 function getComputerSelection(){
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -26,34 +33,43 @@ function playRound(playerSelection, computerSelection){
 
     if(playerSelection === computerSelection){
         ties++;
-        return `Tie game!  You and the computer both chose ${playerSelection}.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
+        tie.textContent = `Ties: ${ties}`;
+        resultMessage.textContent = `Tie Game!  You both chose ${playerSelection}!`;
     }
 
     //playerSelection === rock
     else if(playerSelection === 'rock' && computerSelection === 'paper'){
         computerWins++;
-        return `You lose!  The computer chose paper.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
+        cWins.textContent = `Computer Wins: ${computerWins}`;
+        resultMessage.textContent = 'You lose!';
     } else if(playerSelection === 'rock' && computerSelection === 'scissors'){
         playerWins++;
-        return `You win!  The computer chose scissors.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
+        pWins.textContent = `Player Wins: ${playerWins}`;
+        resultMessage.textContent = 'You win!';
     }
 
     //playerSelection === paper
     else if(playerSelection === 'paper' && computerSelection === 'rock'){
         playerWins++;
-        return `You win!  The computer chose rock.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
+        pWins.textContent = `Player Wins: ${playerWins}`;
+        resultMessage.textContent = 'You win!';
     } else if(playerSelection === 'paper' && computerSelection === 'scissors'){
         computerWins++;
-        return `You lose!  The computer chose scissors.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
+        cWins.textContent = `Computer Wins: ${computerWins}`;
+        resultMessage.textContent = 'You win!';
+        
     }
 
     //playerSelection === scissors
     else if(playerSelection === 'scissors' && computerSelection === 'rock'){
         computerWins++;
-        return `You lose!  The computer chose rock.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
+        cWins.textContent = `Computer Wins: ${computerWins}`;
+        resultMessage.textContent = 'You lose!';
     } else if(playerSelection === 'scissors' && computerSelection === 'paper'){
         playerWins++;
-        return `You win!  The computer chose paper.\nUser Wins: ${playerWins}\nComputer Wins: ${computerWins}\nTies: ${ties}`;
+        pWins.textContent = `Player Wins: ${playerWins}`;
+        resultMessage.textContent = 'You win!';
+        
     }
 }   
 
@@ -87,11 +103,7 @@ function displayComputerInput(computerSelection){
     }
 }
 
-const playerInput = document.querySelector('.playerInput');
-const computerInput = document.querySelector('.computerInput');
-const pWins = document.querySelector('.playerWins');
-const cWins = document.querySelector('.computerWins')
-const tie = document.querySelector('.ties');
+
 
 const rockBtn = document.querySelector('#rock');
 rockBtn.addEventListener('click', () => {
@@ -101,6 +113,7 @@ rockBtn.addEventListener('click', () => {
     computerSelection = getComputerSelection();
     computerInput.textContent = `Computer chooses ${computerSelection}!`;
     displayComputerInput(computerSelection);
+    playRound(playerSelection, computerSelection);
     
     
 }
@@ -114,6 +127,7 @@ paperBtn.addEventListener('click', () => {
     computerSelection = getComputerSelection();
     computerInput.textContent = `Computer chooses ${computerSelection}!`;
     displayComputerInput(computerSelection);
+    playRound(playerSelection, computerSelection);
 }
 );
 
@@ -125,5 +139,6 @@ scissorsBtn.addEventListener('click', () => {
     computerSelection = getComputerSelection();
     computerInput.textContent = `Computer chooses ${computerSelection}!`;
     displayComputerInput(computerSelection);
+    playRound(playerSelection, computerSelection);
 }
 );
