@@ -7,7 +7,7 @@ body {
     justify-content: space-between;
     background-color: #596475;
     color: #30334B;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
 
@@ -79,7 +79,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 5px;
 }
 
 /* win header */
@@ -87,6 +87,13 @@ footer {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.resultMessage {
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    color:#1F2232;
 }
 
 /* display */

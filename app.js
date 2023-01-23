@@ -22,8 +22,6 @@ function getComputerSelection(){
     return computerSelection;
 }
 
-
-
 function playRound(playerSelection, computerSelection){
 
     if(playerSelection === computerSelection){
@@ -72,12 +70,28 @@ function playGame(){
         computerSelection = getComputerSelection();
 
         console.log(playRound(playerSelection, computerSelection));
+}
+
+// Each display picture needs to be resized to fit properly.  This function resizes the picture corresponding to the computer selection. //
+function displayComputerInput(computerSelection){
+    if(computerSelection == 'rock'){
+        computerInput.setAttribute('style', `background-image: url(./images/${computerSelection}.png); background-size: 40%; background-repeat: no-repeat; background-position: center;`);
     }
 
+    else if(computerSelection == 'paper'){
+        computerInput.setAttribute('style', `background-image: url(./images/${computerSelection}.png); background-size: 25%; background-repeat: no-repeat; background-position: center;`);
+    }
+
+    else if(computerSelection == 'scissors'){
+        computerInput.setAttribute('style', `background-image: url(./images/${computerSelection}.png); background-size: 60%; background-repeat: no-repeat; background-position: center;`);
+    }
+}
 
 const playerInput = document.querySelector('.playerInput');
 const computerInput = document.querySelector('.computerInput');
-
+const pWins = document.querySelector('.playerWins');
+const cWins = document.querySelector('.computerWins')
+const tie = document.querySelector('.ties');
 
 const rockBtn = document.querySelector('#rock');
 rockBtn.addEventListener('click', () => {
@@ -85,7 +99,10 @@ rockBtn.addEventListener('click', () => {
     playerInput.textContent = `You choose ${playerSelection}!`;
     playerInput.setAttribute('style', 'background-image: url(./images/rock.png); background-size: 40%; background-repeat: no-repeat; background-position: center;');
     computerSelection = getComputerSelection();
-    computerInput.textContent = `CPU chooses ${computerSelection}!`;
+    computerInput.textContent = `Computer chooses ${computerSelection}!`;
+    displayComputerInput(computerSelection);
+    
+    
 }
 );
 
@@ -95,7 +112,8 @@ paperBtn.addEventListener('click', () => {
     playerInput.textContent = `You choose ${playerSelection}!`;
     playerInput.setAttribute('style', 'background-image: url(./images/paper.png); background-size: 25%; background-repeat: no-repeat; background-position: center;')
     computerSelection = getComputerSelection();
-    computerInput.textContent = `CPU chooses ${computerSelection}!`;
+    computerInput.textContent = `Computer chooses ${computerSelection}!`;
+    displayComputerInput(computerSelection);
 }
 );
 
@@ -105,6 +123,7 @@ scissorsBtn.addEventListener('click', () => {
     playerInput.textContent = `You choose ${playerSelection}!`;
     playerInput.setAttribute('style', 'background-image: url(./images/scissors.png); background-size: 60%; background-repeat: no-repeat; background-position: center;')
     computerSelection = getComputerSelection();
-    computerInput.textContent = `CPU chooses ${computerSelection}!`;
+    computerInput.textContent = `Computer chooses ${computerSelection}!`;
+    displayComputerInput(computerSelection);
 }
 );
