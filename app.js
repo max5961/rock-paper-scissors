@@ -78,24 +78,32 @@ function playRound(playerSelection, computerSelection){
     }
 }   
 
-function playAgain(){
-    playAgainButton.addEventListener('click', () => {
-        playerWins = 0;
-        computerWins = 0;
-        ties = 0;
-            
-        resultMessage.textContent = 'Make a selection by clicking one of the icons below';
+function resetWinnerMessage(){
+    roundWinnerMessage.textContent = '';
+}
 
-        roundWinnerMessage.textContent = '';
-        playAgainButton.removeChild(roundWinner);
-    });
+function resetScore(){
+    pWins.textContent = `Player Wins: ${playerWins}`;
+    cWins.textContent = `Computer Wins: ${computerWins}`;
+    tie.textContent = `Ties: ${ties}`;
+
+}
+
+function playAgain(){
+    playerWins = 0;
+    computerWins = 0;
+    ties = 0;
+            
+    resultMessage.textContent = 'Make a selection by clicking one of the icons below';
 }
 
 function checkWinner(playerWins, computerWins){
-    if(playerWins == 5){
-        roundWinnerMessage.textContent = 'You Win!  You were the first to 5 wins.'
-    } else if(computerWins == 5){
-        roundWinnerMessage.textContent = `You lose.  Computer was the first to 5 wins.`
+    if(playerWins >= 5){
+        roundWinnerMessage.textContent = 'You Win!  You were the first to 5 wins.';
+        playAgain();
+    } else if(computerWins >= 5){
+        roundWinnerMessage.textContent = `You lose.  Computer was the first to 5 wins.`;
+        playAgain();
     }
 }
 
@@ -116,9 +124,13 @@ function displayComputerInput(computerSelection){
 }
 
 
-
 const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+
 rockBtn.addEventListener('click', () => {
+    resetWinnerMessage();
+    resetScore()
     playerSelection = 'rock';
     playerInput.textContent = `You choose ${playerSelection}!`;
     playerInput.setAttribute('style', 'background-image: url(./images/rock.png); background-size: 50%; background-repeat: no-repeat; background-position: center 75%;');
@@ -126,11 +138,15 @@ rockBtn.addEventListener('click', () => {
     computerInput.textContent = `Computer chooses ${computerSelection}!`;
     displayComputerInput(computerSelection);
     playRound(playerSelection, computerSelection);
+    checkWinner(playerWins, computerWins);
+    
 }
 );
 
-const paperBtn = document.querySelector('#paper');
+
 paperBtn.addEventListener('click', () => {
+    resetWinnerMessage();
+    resetScore()
     playerSelection = 'paper';
     playerInput.textContent = `You choose ${playerSelection}!`;
     playerInput.setAttribute('style', 'background-image: url(./images/paper.png); background-size: 35%; background-repeat: no-repeat; background-position: center 75%;')
@@ -138,11 +154,13 @@ paperBtn.addEventListener('click', () => {
     computerInput.textContent = `Computer chooses ${computerSelection}!`;
     displayComputerInput(computerSelection);
     playRound(playerSelection, computerSelection);
+    checkWinner(playerWins, computerWins);
 }
 );
 
-const scissorsBtn = document.querySelector('#scissors');
 scissorsBtn.addEventListener('click', () => {
+    resetWinnerMessage();
+    resetScore();
     playerSelection = 'scissors';
     playerInput.textContent = `You choose ${playerSelection}!`;
     playerInput.setAttribute('style', 'background-image: url(./images/scissors.png); background-size: 65%; background-repeat: no-repeat; background-position: center 75%;')
@@ -150,5 +168,6 @@ scissorsBtn.addEventListener('click', () => {
     computerInput.textContent = `Computer chooses ${computerSelection}!`;
     displayComputerInput(computerSelection);
     playRound(playerSelection, computerSelection);
+    checkWinner(playerWins, computerWins);
 }
 );
