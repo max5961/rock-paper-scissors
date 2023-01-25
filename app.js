@@ -80,6 +80,7 @@ function playRound(playerSelection, computerSelection){
 
 function resetWinnerMessage(){
     roundWinnerMessage.textContent = '';
+
 }
 
 function resetScore(){
@@ -99,11 +100,31 @@ function playAgain(){
 
 function checkWinner(playerWins, computerWins){
     if(playerWins >= 5){
-        roundWinnerMessage.textContent = 'You Win!  You were the first to 5 wins.';
-        playAgain();
+        roundWinnerMessage.textContent = 'You Win!';
+        resetBtn = document.createElement('button');
+        resetBtn.innerHTML = 'Play again';
+        resetBtn.setAttribute('style', 'width: 300px; border-radius: 1em; background-color: purple; font-size: 25px; color: white; padding: 10px;');
+        roundWinnerMessage.setAttribute('style', 'display: flex; flex-direction: column; align-items: center; justify-content: center;');
+        roundWinnerMessage.appendChild(resetBtn);
+        resetBtn.addEventListener('click', () => {
+            playAgain();
+            resetScore();
+            resetWinnerMessage();
+            
+        })
+       
     } else if(computerWins >= 5){
-        roundWinnerMessage.textContent = `You lose.  Computer was the first to 5 wins.`;
-        playAgain();
+        roundWinnerMessage.textContent = `You lose!`;
+        resetBtn = document.createElement('button');
+        resetBtn.innerHTML = 'Play again';
+        resetBtn.setAttribute('style', 'width: 300px; border-radius: 1em; background-color: purple; font-size: 25px; color: white; padding: 10px;');
+        roundWinnerMessage.setAttribute('style', 'display: flex; flex-direction: column; align-items: center; justify-content: center;');
+        roundWinnerMessage.appendChild(resetBtn);
+        resetBtn.addEventListener('click', () => {
+            playAgain();
+            resetScore();
+            resetWinnerMessage();
+        })
     }
 }
 
